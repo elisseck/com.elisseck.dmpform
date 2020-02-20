@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/dmp/import</path>
+    <page_callback>CRM_Dmpform_Form_DmpForm</page_callback>
+    <title>DmpForm</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
