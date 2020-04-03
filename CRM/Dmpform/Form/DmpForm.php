@@ -90,13 +90,16 @@ class CRM_Dmpform_Form_DmpForm extends CRM_Core_Form {
               //If we didn't find a match still, create the contact
               if ($checkNameAddr['count'] == 0) {
                 try {
-                  $newContact = civicrm_api3('Contact', 'create', [
+                  $params = [
                     'contact_type' => "Individual",
                     'first_name' => $data[1],
                     'last_name' => $data[2],
                     'custom_20' => $data[9],
-                    'external_identifier' => 'eTap' . $data[0],
-                  ]);
+                  ];
+                  if ($data[0]) {
+                    $params['external_identifier'] = 'eTap' . $data[0];
+                  }
+                  $newContact = civicrm_api3('Contact', 'create', $params);
                 }
                 catch (CiviCRM_API3_Exception $e) {
                   $error = $e->getMessage();
